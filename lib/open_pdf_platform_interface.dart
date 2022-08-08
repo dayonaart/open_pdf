@@ -26,4 +26,8 @@ abstract class OpenPdfPlatform extends PlatformInterface {
   Future<String?> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
+
+  Future<String?> open(String? path) {
+    throw UnimplementedError('open() has not been implemented.');
+  }
 }

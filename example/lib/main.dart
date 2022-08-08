@@ -1,3 +1,4 @@
+import 'package:advance_pdf_viewer_fork/advance_pdf_viewer_fork.dart';
 import 'package:flutter/material.dart';
 import 'package:open_pdf/open_pdf.dart';
 
@@ -13,12 +14,19 @@ class OpenPdfPage extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         home: SafeArea(
             child: Scaffold(
-          body: FutureBuilder<Widget>(
-              future: _openPdf.openPDF('assets/tt.pdf'),
-              builder: (context, snap) {
-                if (snap.connectionState == ConnectionState.waiting) return Container();
-                return snap.data!;
-              }),
+          body: Center(
+            child: FutureBuilder<Widget>(
+                future: _openPdf.openAssets(path: 'assets/test.pdf'),
+                builder: (context, snap) {
+                  if (snap.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator(
+                      color: Colors.orange,
+                    );
+                  } else {
+                    return snap.data ?? Container();
+                  }
+                }),
+          ),
         )));
   }
 }

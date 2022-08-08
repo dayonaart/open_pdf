@@ -14,4 +14,10 @@ class MethodChannelOpenPdf extends OpenPdfPlatform {
     final version = await methodChannel.invokeMethod<String>('getPlatformVersion');
     return version;
   }
+
+  @override
+  Future<String?> open(String? path) async {
+    final version = await methodChannel.invokeMethod<String>('open', path);
+    return version;
+  }
 }
